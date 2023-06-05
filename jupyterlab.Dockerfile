@@ -5,8 +5,8 @@ FROM cluster-base
 ARG spark_version=3.4.0
 ARG jupyterlab_version=3.5.2
 
-COPY ./redditStreaming/ ${SHARED_WORKSPACE}/redditStreaming/
-COPY ./creds.json ${SHARED_WORKSPACE}/redditStreaming/creds.json
+COPY ./airflow/ ${SHARED_WORKSPACE}/airflow/
+COPY ./creds.json ${SHARED_WORKSPACE}/airflow/creds.json
 
 # base python
 RUN apt-get update -y && \

@@ -29,7 +29,7 @@ RUN pip3 install pyspark==${spark_version} jupyterlab==${jupyterlab_version}
 # RUN pip3 install /opt/workspace/redditStreaming/src/main/python/reddit/dist/reddit-1.0.0-py3-none-any.whl --force-reinstall
 
 # requirements
-RUN pip3 install -r /opt/workspace/airflow/requirements.txt --ignore-installed
+# RUN python3 -m pip install -r /opt/workspace/airflow/requirements.txt --ignore-installed
 
 # add kernel to jupyter
 RUN python3 -m ipykernel install --user --name="yelp-env"

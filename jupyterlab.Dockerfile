@@ -7,6 +7,7 @@ ARG jupyterlab_version=3.5.2
 
 COPY ./airflow/ ${SHARED_WORKSPACE}/airflow/
 COPY ./creds.json ${SHARED_WORKSPACE}/airflow/creds.json
+COPY ./requirements.txt ${SHARED_WORKSPACE}/requirements.txt
 
 # base python
 RUN apt-get update -y && \
@@ -22,13 +23,13 @@ RUN python3 -m venv /opt/workspace/reddit-env && \
 RUN pip3 install pyspark==${spark_version} jupyterlab==${jupyterlab_version}
 
 # custom .whl's
-RUN pip3 install /opt/workspace/redditStreaming/src/main/python/reddit/dist/reddit-1.0.0-py3-none-any.whl --force-reinstall
+# RUN pip3 install /opt/workspace/redditStreaming/src/main/python/reddit/dist/reddit-1.0.0-py3-none-any.whl --force-reinstall
 
 # requirements
-RUN pip3 install -r /opt/workspace/redditStreaming/requirements.txt --ignore-installed
+RUN pip3 install -r /opt/workspace/airflow/requirements.txt --ignore-installed
 
 # add kernel to jupyter
-RUN python3 -m ipykernel install --user --name="reddit-env"
+RUN python3 -m ipykernel install --user --name="yelp-env"
     
 # aws
 RUN rm -rf /var/lib/apt/lists/* && \

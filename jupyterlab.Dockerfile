@@ -7,7 +7,10 @@ ARG jupyterlab_version=3.5.2
 
 COPY ./airflow/ ${SHARED_WORKSPACE}/airflow/
 COPY ./creds.json ${SHARED_WORKSPACE}/airflow/creds.json
-COPY ./requirements.txt ${SHARED_WORKSPACE}/requirements.txt
+COPY ./requirements.txt ${SHARED_WORKSPACE}/airflow/requirements.txt
+COPY ./spark-jobs-playground.ipynb ${SHARED_WORKSPACE}/airflow/spark-jobs-playground.ipynb
+COPY ./create_redshift_cluster.ipynb ${SHARED_WORKSPACE}/airflow/create_redshift_cluster.ipynb
+COPY ./delete_redshift_cluster.ipynb ${SHARED_WORKSPACE}/airflow/delete_redshift_cluster.ipynb
 
 # base python
 RUN apt-get update -y && \
